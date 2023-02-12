@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xing0404</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"
+    />
+  </head>
+  <!-- .background实现网页视频背景 -->
+  <!-- .top实现导航栏盒子并排排放和间隔距离 -->
+  <style>
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -10;
+      object-fit: cover;
+    }
+    .top {
+      display: inline;
+      margin-right: 25px;
+      float: right;
+    }
+    @media screen and (max-width: 750px) {
+      .top {
+        display: flex;
+        margin-left: 0px;
+        margin-top: 30px;
+      }
+      .music {
+        position: absolute;
+        bottom: 1px;
+      }
+    }
+ @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Roboto', sans-serif;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+.header {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+}
+.hamburger {
+  display: none;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #f1eded;
+}
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-item {
+  margin-left: 9rem;
+  font-style: italic;
+  font-size: 5rem;
+  font-weight: 1000;
+}
+
+.nav-link {
+  font-size: 2rem;
+  font-weight: 1000;
+  color: #c7b1b1;
+}
+
+.nav-link:hover {
+  color: #b58650;
+}
+
+.nav-logo {
+  background-image: linear-gradient(90deg, #7209d4, #2832d4 33%, #00a5b2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 4rem;
+  font-style: italic;
+  display: inline;
+}
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    }
+@media only screen and (max-width: 750px) {
+  .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 5rem;
+    flex-direction: column;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+  }
+  .nav-logo {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #95724a;
+  font-style: italic;
+}
+  .nav-link {
+  font-size: 2rem;
+  font-weight: 1000;
+  color: #100f0f;
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .nav-item {
+    margin: 0.1rem 0;
+  }
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+}
+</style>
+  
+
+  <body>
+    <header class="header">
+      <nav class="navbar">
+       <h1 class="nav-logo">XING</h1>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="https://github.com/" class="nav-link">Github</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.google.com/" class="nav-link">Google</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://cn.bing.com/" class="nav-link">Bing</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.bilibili.com/" class="nav-link">Bilibili</a>
+          </li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+    </header>
+      <!-- 实现打开网页音乐播放 -->
+      <div id="sourse" class="music">
+        <audio style="position: absolute; bottom: 1px;" draggable="true" controls="controls" autoplay name="media">
+          <source src="music.mp3" type="audio/mpeg" />
+        </audio>
+      </div>
+      <!-- 实现网页中间的搜索框，css为sousuo.css，按钮图标为ss3.png -->
+      <div class="search-box">
+        <link rel="stylesheet" href="searchbt.css" />
+        <a class="search-btn">
+          <i class="fa fa-search" aria-hidden="false"></i>
+          <img style="height: 40px; width: 40px" src="ss3.png" />
+        </a>
+        <form action="https://cn.bing.com/search">
+          <input
+            name="q"
+            type="text"
+            class="search-txt"
+            placeholder="bing搜索"
+          />
+        </form>
+        <div class="search-line"></div>
+      </div>
+    </header>
+    <!-- 实现网页视频背景 -->
+    <video
+      src="bj.mp4"
+      class="background"
+      webkit-playsinline
+      x5-playsinline
+      autoplay
+      loop
+      muted
+    >
+      您的浏览器不支持该网页的视频背景
+    </video>
+  </body>
+
+    <!-- 实现移动端响应式导航栏 -->
+    <script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", mobileMenu);
+    function mobileMenu() {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+    }
+
+    const navLink = document.querySelectorAll(".nav-link");
+
+    navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+    function closeMenu() {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+    }
+    </script>
+  
+</html>
